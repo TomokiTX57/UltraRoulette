@@ -206,7 +206,7 @@ body {
   font-weight: bold;
   color: #fff;
   text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
-  animation: scroll 45s linear infinite; /* アニメーションを45秒間隔でループ */
+  animation: scroll 55s linear infinite; /* アニメーションを45秒間隔でループ */
   animation-delay: 0s; /* 遅延をゼロに設定 */
   white-space: pre; /* 複数のスペースを保持 */
 }
