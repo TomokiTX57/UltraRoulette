@@ -1,0 +1,232 @@
+/* 全体のスタイル */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* スクロールバーを無効化 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* テキストの色を動画に合わせて調整 */
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* 背景動画のスタイル */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* 横幅を画面いっぱいに設定 */
+  height: 100%; /* 高さを画面いっぱいに設定 */
+  object-fit: cover; /* アスペクト比を維持しながら画面全体にフィット */
+  z-index: -1; /* 動画を背景に配置 */
+}
+
+/* 背景動画のスタイル */
+.background-photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* 横幅を画面いっぱいに設定 */
+  height: 100%; /* 高さを画面いっぱいに設定 */
+  object-fit: cover; /* アスペクト比を維持しながら画面全体にフィット */
+  z-index: -1; /* 動画を背景に配置 */
+}
+
+/* コンテンツ全体のスタイル */
+.content {
+  position: relative;
+  z-index: 1; /* コンテンツを動画の上に配置 */
+}
+
+/* ルーレットのスタイル */
+.roulette-container {
+  position: relative;
+  width: 1900px;
+  height: 1900px;
+  margin: 20px auto;
+}
+
+/* ルーレット画像のスタイル */
+.roulette {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: white;
+  background-image: url("ルーレット1.png"); /* アップロードした画像のパスを指定 */
+  background-size: cover;
+  background-position: center;
+  transform: rotate(0deg); /* 初期の回転角度 */
+  cursor: pointer; /* クリック可能であることを示す */
+}
+
+/* ポインター（三角形）のスタイル */
+.pointer {
+  position: absolute;
+  top: -99px; /* 画像に少し重なる位置 */
+  left: 50%;
+  width: 0;
+  height: 0;
+
+  /* 外側の枠線（三角形） */
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 132px solid black;
+
+  /* 中央揃え */
+  transform: translateX(-50%);
+}
+
+.pointer::after {
+  content: "";
+  position: absolute;
+  top: -129px; /* 黄色いポインターを白枠の中央に配置 */
+  left: -48px; /* 中央揃え */
+  width: 0;
+  height: 0;
+
+  /* 内側の三角形 */
+  border-left: 48px solid transparent; /* 左側の透明部分 */
+  border-right: 48px solid transparent; /* 右側の透明部分 */
+  border-top: 120px solid yellow; /* 黄色いポインター本体 */
+}
+
+.result-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  z-index: 10;
+}
+
+/* アニメーション: ズームイン → 揺らぎ → ズームアウト */
+@keyframes zoomInWobbleOut {
+  0% {
+    transform: translate(-50%, -50%) scale(0); /* 初期状態: ズームイン前 */
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(1); /* ズームイン完了 */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05); /* 揺らぎ: 拡大 */
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.95); /* 揺らぎ: 縮小 */
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(1); /* 揺らぎ終了 */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0); /* ズームアウト */
+  }
+}
+
+/* 結果表示用コンテナ */
+.result-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* 初期状態: 中央でスケール0 */
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
+  border-radius: 20px;
+  z-index: 10;
+  transition: transform 0.5s ease, z-index 0.3s ease; /* アニメーション時のレイヤー変更 */
+}
+
+/* アニメーション適用クラス */
+.result-container.animate {
+  animation: zoomInWobbleOut 7s ease-in-out forwards; /* 7秒間のアニメーション */
+}
+
+/* 結果画像 */
+.result-image {
+  max-width: 400%;
+  max-height: 400%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.casino-sign {
+  position: absolute; /* 親要素に依存せず絶対配置 */
+  top: 500px; /* 垂直方向の位置を画面下の方に調整 */
+  left: 50%; /* 水平方向の中央 */
+  transform: translate(-50%, -50%); /* 自身のサイズ分だけ位置を調整 */
+  width: 3000px; /* 看板の幅 */
+  height: 200px; /* 看板の高さ */
+  background: #14133d; /* 看板内部の背景色 */
+  border: 12px solid #ffcc00; /* 枠の色 */
+  border-radius: 50px; /* 枠の角を丸くする */
+  box-shadow: 0 0 30px #ffcc00, inset 0 0 20px #ffcc00; /* 光る枠線効果 */
+  overflow: hidden; /* 子要素が枠からはみ出さないようにする */
+  z-index: 10; /* 他の要素より前に配置 */
+}
+
+/* スクロールするテキスト */
+.scroll-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: left; /* テキストを左揃え */
+  align-items: center;
+  white-space: nowrap; /* テキストを1行で表示 */
+  overflow: hidden;
+  z-index: 4; /* スクロールテキストを前面に配置 */
+}
+
+/* スクロールテキスト全体のコンテナ */
+#scroll-text-container {
+  width: auto; /* 子要素に合わせて幅を自動調整 */
+  height: auto; /* 高さを自動調整 */
+  display: auto; /* 子要素を自動調整 */
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: none; /* 背景が不要なら削除 */
+  padding: 0; /* 余白を不要にする */
+}
+
+.scroll-text span {
+  font-size: 150px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+  animation: scroll 45s linear infinite; /* アニメーションを45秒間隔でループ */
+  animation-delay: 0s; /* 遅延をゼロに設定 */
+  white-space: pre; /* 複数のスペースを保持 */
+}
+
+/* テキストスクロールアニメーション */
+@keyframes scroll {
+  0% {
+    transform: translateX(20%); /* テキストが画面外右から開始 */
+  }
+  100% {
+    transform: translateX(-100%); /* テキストが画面外左へ移動 */
+  }
+}
+
+#scroll-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* 初期は非表示 */
+  display: none;
+  transition: transform 0.5s ease, opacity 0.5s ease; /* アニメーション設定 */
+}

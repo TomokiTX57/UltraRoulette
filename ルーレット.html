@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>背景動画とルーレット</title>
+  <link rel="stylesheet" href="style.css"> <!-- 外部CSSを読み込む -->
+</head>
+<body>
+  <!-- 背景動画 -->
+  <video class="background-video" autoplay loop muted playsinline>
+    <source src="background.mp4" type="video/mp4">
+    お使いのブラウザは動画をサポートしていません。
+  </video>
+
+  <!-- ページのコンテンツ -->
+  <div class="content">
+    
+    <!-- ルーレット -->
+    <div class="roulette-container">
+      <div class="roulette" id="roulette"></div>
+      <div class="pointer"></div>
+    </div>
+
+    <!-- カジノ看板 -->
+    <div id="scroll-text-container" style="display: none;">
+      <div class="casino-sign">
+        <div class="scroll-text">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 結果画像表示用 -->
+    <div id="result-container" class="result-container">
+      <img id="result-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wIAAgUBAcOAYq8AAAAASUVORK5CYII=" alt="結果画像" class="result-image">
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- 外部JavaScriptを読み込む -->
+</body>
+</html>
