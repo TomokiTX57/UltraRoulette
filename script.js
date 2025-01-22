@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "フルハウス以上の役でルーレットStart!!",
     "ルーレットで出たBB数分が次のポットに投入!!",
     "役が完成していて、相手に降りられてしまっても、ハンドをショーすればルーレットStart!!",
-    "特殊ゲームは次の3つ！"
+    "特殊ゲームは次の3つ！",
     "①ディーラー交代時はBOMB POT💣" ,
     "②STAND UP",
     "③NO LIMIT STRADDLE",
