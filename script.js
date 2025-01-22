@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollMessages = [
     "本日はUltra Ring Day",
     "フルハウス以上の役でルーレットStart!!",
-    "ルーレットで出たBB数分が次のポットに投入!!",
+    "ルーレットで出たBB数分を次のポットに投入!!",
     "役が完成していて、相手に降りられてしまっても、ハンドをショーすればルーレットStart!!",
     "特殊ゲームは次の3つ！",
     "①ディーラー交代時はBOMB POT💣" ,
